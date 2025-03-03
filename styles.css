@@ -50,6 +50,18 @@ body {
     to {background-position: -10000px 5000px;}
 }
 
+/* 全局居中样式 */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    text-align: center;
+    margin: 4rem 0;
+}
+
 /* 导航栏样式 */
 .navbar {
     background-color: rgba(10, 13, 31, 0.8);
@@ -64,6 +76,8 @@ body {
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid rgba(78, 124, 255, 0.2);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
@@ -115,17 +129,12 @@ body {
     width: 100%;
 }
 
-/* 主要内容区域 */
-main {
-    margin-top: 70px;
-}
-
 /* 英雄区域样式 */
 .hero {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 2rem;
     position: relative;
@@ -145,6 +154,7 @@ main {
 
 .hero-content {
     max-width: 800px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -226,11 +236,10 @@ main {
 /* 通用部分样式 */
 .section-title {
     text-align: center;
+    color: #fff;
+    font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--primary-color);
-    font-size: 2.2rem;
     position: relative;
-    display: inline-block;
     padding-bottom: 1rem;
 }
 
@@ -240,9 +249,9 @@ main {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: 100px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    background: linear-gradient(90deg, transparent, #fff, transparent);
 }
 
 /* 关于我部分 */
@@ -296,86 +305,151 @@ main {
 
 /* 项目部分 */
 .projects {
-    padding: 6rem 2rem;
-    text-align: center;
+    padding: 4rem 2rem;
     position: relative;
-}
-
-.projects::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(78, 124, 255, 0.1) 0%, rgba(10, 13, 31, 0) 70%);
-    z-index: -1;
+    background: rgba(10, 13, 31, 0.7);
 }
 
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 .project-card {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 2.5rem;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(78, 124, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.project-icon {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+.project-image {
+    flex: 1;
+    max-width: 400px;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(45deg, rgba(78, 124, 255, 0.1), rgba(78, 124, 255, 0.2));
+}
+
+.project-image::before {
+    content: '项目截图';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.2rem;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    flex: 1;
+    text-align: left;
 }
 
 .project-card h3 {
+    font-size: 2rem;
+    color: #fff;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    font-weight: 600;
 }
 
-.project-hover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(26, 31, 58, 0.9);
+.project-card p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.project-links {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-.project-card:hover .project-hover {
-    opacity: 1;
-}
-
-.view-more {
-    color: var(--text-color);
-    border: 1px solid var(--primary-color);
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
+.project-link {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.view-more:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+.project-link:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.project-tech {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(78, 124, 255, 0.1);
+    border-radius: 15px;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 968px) {
+    .project-card {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    .project-image {
+        max-width: 100%;
+        height: 200px;
+    }
+
+    .project-content {
+        text-align: center;
+    }
+
+    .project-links {
+        justify-content: center;
+    }
+
+    .project-tech {
+        justify-content: center;
+    }
 }
 
 /* 联系方式部分 */
@@ -463,17 +537,21 @@ footer {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .navbar {
         flex-direction: column;
         padding: 1rem;
     }
     
-    .logo {
-        margin-bottom: 1rem;
-    }
-    
     .nav-links {
-        gap: 1rem;
+        margin-top: 1rem;
     }
     
     .glowing-text {
@@ -487,5 +565,282 @@ footer {
     .footer-content {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+/* 专业技能部分 */
+.skills {
+    padding: 6rem 2rem;
+    background-color: rgba(10, 13, 31, 0.7);
+    text-align: center;
+    position: relative;
+}
+
+.skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(78, 124, 255, 0.1) 0%, rgba(10, 13, 31, 0) 70%);
+    z-index: -1;
+}
+
+.skills-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--card-border);
+}
+
+.skills-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(78, 124, 255, 0.2);
+}
+
+.skills-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.skills-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.skills-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.skills-card ul li {
+    margin: 0.8rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.skills-card ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* 博客部分 */
+.blog {
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.blog::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(78, 124, 255, 0.1) 0%, rgba(10, 13, 31, 0) 70%);
+    z-index: -1;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--card-border);
+    text-align: left;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(78, 124, 255, 0.2);
+}
+
+.blog-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.blog-date {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: var(--text-color);
+}
+
+/* 简历部分 */
+.resume {
+    padding: 6rem 2rem;
+    background-color: rgba(10, 13, 31, 0.7);
+    text-align: center;
+    position: relative;
+}
+
+.resume::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(78, 124, 255, 0.1) 0%, rgba(10, 13, 31, 0) 70%);
+    z-index: -1;
+}
+
+.resume-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.resume-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--card-border);
+    text-align: left;
+}
+
+.resume-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(78, 124, 255, 0.2);
+}
+
+.resume-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.resume-item {
+    margin-bottom: 1.5rem;
+}
+
+.resume-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.resume-details {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.resume-item ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.resume-item ul li {
+    margin: 0.5rem 0;
+    position: relative;
+}
+
+.resume-item ul li::before {
+    content: '▹';
+    position: absolute;
+    left: -1.5rem;
+    color: var(--primary-color);
+}
+
+.resume-download {
+    margin-top: 3rem;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--glow-color));
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 124, 255, 0.3);
+}
+
+/* 更新项目卡片样式 */
+.project-card .view-more {
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.project-card .view-more:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* 更新联系方式样式 */
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--text-color);
+}
+
+/* 响应式设计补充 */
+@media (max-width: 768px) {
+    .skills-content,
+    .blog-grid,
+    .resume-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-card,
+    .blog-card,
+    .resume-card {
+        margin-bottom: 1rem;
     }
 } 
